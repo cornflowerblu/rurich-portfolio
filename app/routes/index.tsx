@@ -12,7 +12,9 @@ export default function Index() {
           <h1 className="text-3xl font-bold">
             <h2>Home</h2>
           </h1>
-          <p>{user?.email}</p>
+          <Link to='/notes'>
+            <p>{user?.email}</p>
+          </Link>
           <Form action={user ? '/logout' : "/login"} method="post">
             <button
               type="submit"
