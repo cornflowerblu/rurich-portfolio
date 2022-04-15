@@ -22,8 +22,9 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Remix Notes",
+  title: "Roger's Little Corner of the Internet",
   viewport: "width=device-width,initial-scale=1",
+  description: "A place for me to share thoughts, ideas, and even some personal stuff for friends and close colleagues"
 });
 
 type LoaderData = {
