@@ -20,8 +20,9 @@ describe("smoke tests", () => {
     cy.findByRole("button", { name: /create account/i }).click();
 
     cy.findByRole("link", { name: /notes/i }).click();
+    cy.wait(3000)
     cy.findByRole("button", { name: /logout/i }).click();
-    cy.findByRole("link", { name: /log in/i });
+    cy.findByRole("button", { name: /login/i });
   });
 
   it("should allow you to make a note", () => {
