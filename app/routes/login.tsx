@@ -32,10 +32,7 @@ export const action: ActionFunction = async ({ request }) => {
   const remember = formData.get("remember");
 
   if (!validateEmail(email)) {
-    return json<ActionData>(
-      { errors: { email: "Email is invalid" } },
-      { status: 400 }
-    );
+    return true;
   }
 
   if (typeof password !== "string") {
@@ -114,6 +111,11 @@ export default function LoginPage() {
                 aria-describedby="email-error"
                 className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
               />
+              {actionData?.errors?.email && (
+                <div className="pt-1 text-red-700" id="email-error">
+                  {actionData.errors.email}
+                </div>
+              )}
             </div>
           </div>
 
