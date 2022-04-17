@@ -59,7 +59,13 @@ class Waterpipe extends Component {
     return (
       <div
         id="wavybg-wrapper"
-        style={{ width: "100%", height: "100vh", position: "absolute", left: 0, zIndex: -1 }}
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "absolute",
+          left: 0,
+          zIndex: -1,
+        }}
       >
         <canvas></canvas>
         <div className={styles.scroller}>

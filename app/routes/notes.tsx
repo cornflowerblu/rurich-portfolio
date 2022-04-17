@@ -26,7 +26,7 @@ export default function NotesPage() {
         <h1 className="text-3xl font-bold">
           <Link to="/">Home</Link>
         </h1>
-        <Link to='.'>
+        <Link to=".">
           <p>{user.email}</p>
         </Link>
         <Form action="/logout" method="post">

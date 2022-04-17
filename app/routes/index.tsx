@@ -12,18 +12,19 @@ export default function Index() {
           <h1 className="text-3xl font-bold">
             <h2>Home</h2>
           </h1>
-          <Link to='/notes'>
+          <Link to="/notes">
             <p>{user?.email}</p>
           </Link>
-          <Form action={user ? '/logout' : "/login"} method="post">
+          <Form action={user ? "/logout" : "/login"} method="post">
             <button
               type="submit"
               className="rounded bg-slate-600 py-2 px-4 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
             >
-              {user ? 'Logout' : 'Login'}
+              {user ? "Logout" : "Login"}
             </button>
           </Form>
-        </header><main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
+        </header>
+        <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
           <div className="relative sm:pb-16 sm:pt-8">
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
@@ -31,7 +32,8 @@ export default function Index() {
                   <img
                     className="h-full w-full object-cover"
                     src="https://user-images.githubusercontent.com/1500684/157774694-99820c51-8165-4908-a031-34fc371ac0d6.jpg"
-                    alt="Sonic Youth On Stage" />
+                    alt="Sonic Youth On Stage"
+                  />
                   <div className="absolute inset-0 bg-[color:rgba(254,204,27,0.5)] mix-blend-multiply" />
                 </div>
                 <div className="lg:pb-18 relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-14 lg:px-8 lg:pt-32">
@@ -41,7 +43,8 @@ export default function Index() {
                     </span>
                   </h1>
                   <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-                    This EPIC portfolio showcase is gonna be for RURICH on the JAMstack!
+                    This EPIC portfolio showcase is gonna be for RURICH on the
+                    JAMstack!
                   </p>
                   <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                     {user ? (
@@ -72,7 +75,8 @@ export default function Index() {
                     <img
                       src="https://user-images.githubusercontent.com/1500684/158298926-e45dafff-3544-4b69-96d6-d3bcc33fc76a.svg"
                       alt="Remix"
-                      className="mx-auto mt-16 w-full max-w-[12rem] md:max-w-[16rem]" />
+                      className="mx-auto mt-16 w-full max-w-[12rem] md:max-w-[16rem]"
+                    />
                   </a>
                 </div>
               </div>
