@@ -8,9 +8,14 @@ export type { User } from "@prisma/client";
 
 export type Author = {
   name: string;
-  intro: string;
   slug: string;
 };
+
+type AuthorResponse = {
+  createAuthor: {
+    id: string;
+  }
+}
 
 export function slugify(name: String) {
   return name
@@ -35,12 +40,11 @@ export async function createUser(
   email: User["email"],
   password: string,
   name: string,
-  intro: string
 ) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Associate the user with a newly created Author in GraphCMS. 
-  const endpoint = "https://api.graph.cool/simple/v1/cixos23120m0n0173veiiwrjr";
+  const endpoint = "https://api-us-west-2.graphcms.com/v2/cky6u2mme1rye01z646gxgq3k/master";
 
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
@@ -49,19 +53,18 @@ export async function createUser(
   });
 
   const mutation = gql`
-  mutation {
-    createAuthor($name: String!, $intro: String!, $bio: String!, $slug: String!) {
+  mutation createAuthor($name: String!, $slug: String!) {
+    createAuthor(data:{name: $name, slug: $slug}) {
       id
     }
   }`;
 
   const authorInput: Author = {
     name: name,
-    intro: intro,
     slug: slugify(name),
   };
 
-  const authorId = await graphQLClient.request(mutation, authorInput);
+  const authorId: AuthorResponse = await graphQLClient.request(mutation, authorInput);
 
   return prisma.user.create({
     data: {
@@ -71,7 +74,7 @@ export async function createUser(
           hash: hashedPassword,
         },
       },
-      authorId: authorId,
+      authorId: authorId?.createAuthor?.id,
     },
   });
 }
