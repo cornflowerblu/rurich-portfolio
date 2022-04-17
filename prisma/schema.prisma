@@ -10,6 +10,7 @@ generator client {
 model User {
   id    String @id @default(cuid())
   email String @unique
+  authorId String? @unique // This value is provided by GraphCMS and used to associate users with entries. 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
