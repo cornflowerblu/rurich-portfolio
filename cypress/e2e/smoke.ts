@@ -5,18 +5,22 @@ describe("smoke tests", () => {
     cy.cleanupUser();
   });
 
+  
   it("should allow you to register and login", () => {
-    const loginForm = {
+    const signupForm = {
+      name: `${faker.name.findName()}`,
       email: `${faker.internet.userName()}@example.com`,
       password: faker.internet.password(),
     };
-    cy.then(() => ({ email: loginForm.email })).as("user");
+
+    cy.then(() => ({ email: signupForm.email })).as("user");
 
     cy.visit("/");
     cy.findByRole("link", { name: /sign up/i }).click();
 
-    cy.findByRole("textbox", { name: /email/i }).type(loginForm.email);
-    cy.findByLabelText(/password/i).type(loginForm.password);
+    cy.findByRole("textbox", { name: /name/i }).type(signupForm.name);
+    cy.findByRole("textbox", { name: /email/i }).type(signupForm.email);
+    cy.findByLabelText(/password/i).type(signupForm.password);
     cy.findByRole("button", { name: /create account/i }).click();
 
     cy.findByRole("link", { name: /notes/i }).click();
